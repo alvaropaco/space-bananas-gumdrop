@@ -12,6 +12,10 @@ import {
   StepLabel,
   Stepper,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 
 import {
@@ -630,22 +634,22 @@ export const Claim = (
   }
 
   const params = queryString.parse(query);
-  const [distributor,] = React.useState(params.distributor as string || "");
-  const [claimMethod, ] = React.useState(
+  const [distributor, setDistributor] = React.useState(params.distributor as string || "");
+  const [claimMethod, setClaimMethod] = React.useState(
         params.tokenAcc ? "transfer"
       : params.config   ? "candy"
       : params.master   ? "edition"
       :                   "");
   const [tokenAcc, setTokenAcc] = React.useState(params.tokenAcc as string || "");
-  const [candyConfig, ] = React.useState(params.config as string || "");
-  const [candyUUID, ] = React.useState(params.uuid as string || "");
+  const [candyConfig, setCandyConfig] = React.useState(params.config as string || "");
+  const [candyUUID, setCandyUUID] = React.useState(params.uuid as string || "");
   const [masterMint, setMasterMint] = React.useState(params.master as string || "");
   const [editionStr, setEditionStr] = React.useState(params.edition as string || "");
-  const [handle, ] = React.useState(params.handle as string || "");
+  const [handle, setHandle] = React.useState(params.handle as string || "");
   const [amountStr, setAmount] = React.useState(params.amount as string || "");
-  const [indexStr, ] = React.useState(params.index as string || "");
-  const [pinStr, ] = React.useState(params.pin as string || "");
-  const [proofStr, ] = React.useState(params.proof as string || "");
+  const [indexStr, setIndex] = React.useState(params.index as string || "");
+  const [pinStr, setPin] = React.useState(params.pin as string || "");
+  const [proofStr, setProof] = React.useState(params.proof as string || "");
 
   const discordGuild = params.guild;
 
@@ -662,7 +666,7 @@ export const Claim = (
     // NB: pin can be empty if handle is a public-key and we are claiming through wallets
     // NB: proof can be empty!
 
-  const [editable,] = React.useState(!allFieldsPopulated);
+  const [editable, setEditable] = React.useState(!allFieldsPopulated);
 
   // temporal verification
   const [transaction, setTransaction] = React.useState<Transaction | null>(null);
@@ -984,7 +988,7 @@ export const Claim = (
     if (claimMethod === "candy") {
       return (
         <React.Fragment>
-          {/* <TextField
+          <TextField
             id="config-text-field"
             label="Candy Config"
             value={candyConfig}
@@ -997,7 +1001,7 @@ export const Claim = (
             value={candyUUID}
             onChange={e => setCandyUUID(e.target.value)}
             disabled={!editable}
-          /> */}
+          />
         </React.Fragment>
       );
     } else if (claimMethod === "transfer") {
@@ -1036,14 +1040,14 @@ export const Claim = (
 
   const populateClaimC = (onClick) => (
     <React.Fragment>
-      {/* <TextField
+      <TextField
         id="distributor-text-field"
         label="Distributor"
         value={distributor}
         onChange={(e) => setDistributor(e.target.value)}
         disabled={true}
-      /> */}
-      {/* <FormControl fullWidth>
+      />
+      <FormControl fullWidth>
         <InputLabel
           id="claim-method-label"
           disabled={true}
@@ -1063,7 +1067,7 @@ export const Claim = (
           <MenuItem value={"candy"}>Candy Machine</MenuItem>
           <MenuItem value={"edition"}>Limited Edition</MenuItem>
         </Select>
-      </FormControl> */}
+      </FormControl>
       {claimMethod !== "" && claimData(claimMethod)}
       {claimMethod !== "edition" && <TextField
         id="amount-text-field"
@@ -1072,7 +1076,7 @@ export const Claim = (
         onChange={(e) => setAmount(e.target.value)}
         disabled={false}
       />}
-      {/* <TextField
+      <TextField
         id="handle-text-field"
         label="Handle"
         value={handle}
@@ -1100,13 +1104,13 @@ export const Claim = (
         value={proofStr}
         onChange={(e) => setProof(e.target.value)}
         disabled={true}
-      /> */}
-      {/* <Button
+      />
+      <Button
         color="info"
         onClick={() => setEditable(!editable)}
       >
         {!editable ? "Edit Claim" : "Stop Editing"}
-      </Button> */}
+      </Button>
       <Box />
 
       <Box sx={{ position: "relative" }}>
