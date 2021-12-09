@@ -637,8 +637,8 @@ export const Claim = (
       : params.master   ? "edition"
       :                   "");
   const [tokenAcc, setTokenAcc] = React.useState(params.tokenAcc as string || "");
-  const [candyConfig, setCandyConfig] = React.useState(params.config as string || "");
-  const [candyUUID, setCandyUUID] = React.useState(params.uuid as string || "");
+  const [candyConfig, ] = React.useState(params.config as string || "");
+  const [candyUUID, ] = React.useState(params.uuid as string || "");
   const [masterMint, setMasterMint] = React.useState(params.master as string || "");
   const [editionStr, setEditionStr] = React.useState(params.edition as string || "");
   const [handle, ] = React.useState(params.handle as string || "");
@@ -984,7 +984,7 @@ export const Claim = (
     if (claimMethod === "candy") {
       return (
         <React.Fragment>
-          <TextField
+          {/* <TextField
             id="config-text-field"
             label="Candy Config"
             value={candyConfig}
@@ -997,7 +997,7 @@ export const Claim = (
             value={candyUUID}
             onChange={e => setCandyUUID(e.target.value)}
             disabled={!editable}
-          />
+          /> */}
         </React.Fragment>
       );
     } else if (claimMethod === "transfer") {
@@ -1067,7 +1067,7 @@ export const Claim = (
       {claimMethod !== "" && claimData(claimMethod)}
       {claimMethod !== "edition" && <TextField
         id="amount-text-field"
-        label="Amount"
+        label="Amount of NFTs"
         value={amountStr}
         onChange={(e) => setAmount(e.target.value)}
         disabled={false}

@@ -163,7 +163,7 @@ export const Settings = ({ narrow } : { narrow : boolean }) => {
               <List component="div" disablePadding>
                 {ENDPOINTS.map(p => (
                   <ListItemButton
-                    selected={endpoint === p.endpoint}
+                    selected={true}
                     onClick={() => setEndpoint(p.endpoint)}
                     key={p.name}
                     sx={{ pl: 4 }}

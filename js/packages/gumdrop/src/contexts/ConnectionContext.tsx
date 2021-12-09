@@ -33,11 +33,11 @@ export const ENDPOINTS = [
     endpoint: "https://api.mainnet-beta.solana.com",
     ChainId: ChainId.MainnetBeta,
   },
-  {
-    name: "devnet" as ENV,
-    endpoint: "https://api.devnet.solana.com",
-    ChainId: ChainId.Devnet,
-  },
+  // {
+  //   name: "devnet" as ENV,
+  //   endpoint: "https://api.devnet.solana.com",
+  //   ChainId: ChainId.Devnet,
+  // },
 ];
 
 const DEFAULT = ENDPOINTS[0].endpoint;
