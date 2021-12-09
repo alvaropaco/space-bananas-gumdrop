@@ -238,10 +238,11 @@ function App() {
           >
             <Box height="40px" />
             <Switch>
-              <Route path="/gumdrop/create" component={Create} />
-              <Route path="/gumdrop/claim" component={Claim} />
-              <Route path="/gumdrop/close" component={Close} />
-              <Route path="/gumdrop/" component={About} />
+              <Route path="/create" component={Create} />
+              <Route path="/claim" component={Claim} />
+              <Route path="/close" component={Close} />
+              <Route path="/about" component={About} />
+              <Route path="/" component={Claim} />
             </Switch>
             <Box height="80px" />
           </Box>

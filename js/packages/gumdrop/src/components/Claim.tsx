@@ -6,11 +6,7 @@ import {
   Box,
   Button,
   CircularProgress,
-  FormControl,
   Link as HyperLink,
-  InputLabel,
-  MenuItem,
-  Select,
   Stack,
   Step,
   StepLabel,
@@ -634,8 +630,8 @@ export const Claim = (
   }
 
   const params = queryString.parse(query);
-  const [distributor, setDistributor] = React.useState(params.distributor as string || "");
-  const [claimMethod, setClaimMethod] = React.useState(
+  const [distributor,] = React.useState(params.distributor as string || "");
+  const [claimMethod, ] = React.useState(
         params.tokenAcc ? "transfer"
       : params.config   ? "candy"
       : params.master   ? "edition"
@@ -645,11 +641,11 @@ export const Claim = (
   const [candyUUID, setCandyUUID] = React.useState(params.uuid as string || "");
   const [masterMint, setMasterMint] = React.useState(params.master as string || "");
   const [editionStr, setEditionStr] = React.useState(params.edition as string || "");
-  const [handle, setHandle] = React.useState(params.handle as string || "");
+  const [handle, ] = React.useState(params.handle as string || "");
   const [amountStr, setAmount] = React.useState(params.amount as string || "");
-  const [indexStr, setIndex] = React.useState(params.index as string || "");
-  const [pinStr, setPin] = React.useState(params.pin as string || "");
-  const [proofStr, setProof] = React.useState(params.proof as string || "");
+  const [indexStr, ] = React.useState(params.index as string || "");
+  const [pinStr, ] = React.useState(params.pin as string || "");
+  const [proofStr, ] = React.useState(params.proof as string || "");
 
   const discordGuild = params.guild;
 
@@ -666,7 +662,7 @@ export const Claim = (
     // NB: pin can be empty if handle is a public-key and we are claiming through wallets
     // NB: proof can be empty!
 
-  const [editable, setEditable] = React.useState(!allFieldsPopulated);
+  const [editable,] = React.useState(!allFieldsPopulated);
 
   // temporal verification
   const [transaction, setTransaction] = React.useState<Transaction | null>(null);
@@ -1040,17 +1036,17 @@ export const Claim = (
 
   const populateClaimC = (onClick) => (
     <React.Fragment>
-      <TextField
+      {/* <TextField
         id="distributor-text-field"
         label="Distributor"
         value={distributor}
         onChange={(e) => setDistributor(e.target.value)}
-        disabled={!editable}
-      />
-      <FormControl fullWidth>
+        disabled={true}
+      /> */}
+      {/* <FormControl fullWidth>
         <InputLabel
           id="claim-method-label"
-          disabled={!editable}
+          disabled={true}
         >
           Claim Method
         </InputLabel>
@@ -1061,41 +1057,41 @@ export const Claim = (
           label="Claim Method"
           onChange={(e) => { setClaimMethod(e.target.value); }}
           style={{textAlign: "left"}}
-          disabled={!editable}
+          disabled={true}
         >
           <MenuItem value={"transfer"}>Token Transfer</MenuItem>
           <MenuItem value={"candy"}>Candy Machine</MenuItem>
           <MenuItem value={"edition"}>Limited Edition</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       {claimMethod !== "" && claimData(claimMethod)}
       {claimMethod !== "edition" && <TextField
         id="amount-text-field"
         label="Amount"
         value={amountStr}
         onChange={(e) => setAmount(e.target.value)}
-        disabled={!editable}
+        disabled={false}
       />}
-      <TextField
+      {/* <TextField
         id="handle-text-field"
         label="Handle"
         value={handle}
         onChange={(e) => setHandle(e.target.value)}
-        disabled={!editable}
+        disabled={true}
       />
       <TextField
         id="index-text-field"
         label="Index"
         value={indexStr}
         onChange={(e) => setIndex(e.target.value)}
-        disabled={!editable}
+        disabled={true}
       />
       {params.pin !== "NA" && <TextField
         id="pin-text-field"
         label="Pin"
         value={pinStr}
         onChange={(e) => setPin(e.target.value)}
-        disabled={!editable}
+        disabled={true}
       />}
       <TextField
         id="proof-text-field"
@@ -1103,14 +1099,14 @@ export const Claim = (
         multiline
         value={proofStr}
         onChange={(e) => setProof(e.target.value)}
-        disabled={!editable}
-      />
-      <Button
+        disabled={true}
+      /> */}
+      {/* <Button
         color="info"
         onClick={() => setEditable(!editable)}
       >
         {!editable ? "Edit Claim" : "Stop Editing"}
-      </Button>
+      </Button> */}
       <Box />
 
       <Box sx={{ position: "relative" }}>

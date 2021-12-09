@@ -21,21 +21,9 @@ import { Settings } from "../Settings";
 export const Header = ({ narrow } : { narrow : boolean }) => {
   const navs = [
     {
-      href: `/gumdrop/`,
-      innerNarrow: "About",
+      href: `/`,
+      innerNarrow: "Space Bananas Gumdrop",
       inner: <HomeIcon />,
-    },
-    {
-      href: `/gumdrop/create`,
-      inner: "Create",
-    },
-    {
-      href: `/gumdrop/claim`,
-      inner: "Claim",
-    },
-    {
-      href: `/gumdrop/close`,
-      inner: "Close",
     },
   ];
 

@@ -215,9 +215,7 @@ export const Settings = ({ narrow } : { narrow : boolean }) => {
                 onChange={(e) => { setEndpoint(e.target.value); }}
                 value={endpoint}
               >
-                {ENDPOINTS.map(({ name, endpoint }) => (
-                  <MenuItem key={name} value={endpoint}>{name}</MenuItem>
-                ))}
+                <MenuItem key={ENDPOINTS[0].name} value={ENDPOINTS[0].endpoint}>{ENDPOINTS[0].name}</MenuItem>
               </Select>
             </FormControl>
             <Link underline="none">
